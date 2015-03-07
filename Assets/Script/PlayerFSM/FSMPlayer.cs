@@ -5,7 +5,7 @@ public class FSMPlayer : FSMBase
 {
     public FSMPlayerData d;
     public CharacterController cc;
-
+   
     void Awake()
     {
 

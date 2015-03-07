@@ -11,7 +11,7 @@ public class FSMPlayerData : FSMDataBase
 	public float moveSpeed = 2f;
 	public float rotateSpeed = 360f;
 	//public float attackRange = 1.6f;
-	
+    public bool bCanReceiveInput = true;
 	//public int layerMask;
 	
 	

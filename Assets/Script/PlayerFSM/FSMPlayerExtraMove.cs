@@ -7,10 +7,10 @@ public class FSMPlayerExtraMove : FSMPlayer
  //    Vector3 _forward;
      Vector3 _StartPos;
      Vector3 _EndPos;
-     public bool canMove = true;
+    // public bool canMove = true;
      void SetCanAction(bool bCanAction)
      {
-         canMove = bCanAction;
+         d.bCanReceiveInput = bCanAction;
      }
     void OnEnable()
     {
@@ -18,11 +18,11 @@ public class FSMPlayerExtraMove : FSMPlayer
        // Debug.Log("EnterExtraMove");
   //      _forward = transform.forward;
         _StartPos = transform.position;
-        if(canMove)
+        if (d.bCanReceiveInput)
         {
             _EndPos = new Vector3((float)((int)_StartPos.x), transform.position.y, (float)((int)_StartPos.z)) + transform.forward;
 
-            canMove = false;
+            d.bCanReceiveInput = false;
         }
 
     }
@@ -53,7 +53,7 @@ public class FSMPlayerExtraMove : FSMPlayer
        transform.position = nextPos;
         if (_EndPos == nextPos)
         {
-            canMove = true;
+            d.bCanReceiveInput = true;
             SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
         }
        

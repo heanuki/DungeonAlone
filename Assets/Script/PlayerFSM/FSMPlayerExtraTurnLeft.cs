@@ -6,18 +6,18 @@ public class FSMPlayerExtraTurnLeft : FSMPlayer
 {
 
     Quaternion _endRot;
-    public bool canRotate = true;
+   // public bool canRotate = true;
     // Vector3 rotateAxis = new Vector3(0f, 1f, 0f);
     void SetCanAction(bool bCanAction)
     {
-        canRotate = bCanAction;
+        d.bCanReceiveInput = bCanAction;
     }
     void OnEnable()
     {
         float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
-        if (canRotate)
+        if (d.bCanReceiveInput)
         {
-            canRotate = false;
+            d.bCanReceiveInput = false;
             _endRot = transform.rotation * Quaternion.Euler(Vector3.up * -90f);
         }
 
@@ -35,7 +35,7 @@ public class FSMPlayerExtraTurnLeft : FSMPlayer
         transform.rotation = nextRot;
         if (nextRot == _endRot)
         {
-            canRotate = true;
+            d.bCanReceiveInput = true;
             SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
         }
 
