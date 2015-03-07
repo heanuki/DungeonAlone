@@ -9,6 +9,10 @@ function OnTriggerEnter(coll : Collider) {
 	Destroy(gameObject);									//HP 구슬 제거
 	if (js_Status.healthPoint < js_Status.maxHealthPoint) {	//최대 체력과 현재 체력 비교
 	    js_Status.healthPoint += healpower;							//HP 증가
+	    if(js_Status.healthPoint > js_Status.maxHealthPoint) {
+	        js_Status.healthPoint = js_Status.maxHealthPoint;
+	    }
+
 	}
 }
 

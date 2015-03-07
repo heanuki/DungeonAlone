@@ -8,6 +8,8 @@ static var healthPoint = 0;	//현재 체력
 static var physicalPower = 1;	//물리공격력
 static var key = 1;				//현재 보유한 열쇠 수 
 private var _t = 0f;
+var startX = 2;
+var startZ = -9;
 var darkDamage = 1;
 var PlayerDeadSnd : AudioClip;	//플레이어 사망 효과음 
 
@@ -37,8 +39,8 @@ function InitializeStatus () {
 function PlayerDead() {
 		print("You are dead!");
 		AudioSource.PlayClipAtPoint(PlayerDeadSnd, transform.position);	//플레이어 사망 효과음 
-		Application.LoadLevel("testmapF1");
-		gameObject.transform.position = Vector3(0, 0, 0);
+		Application.LoadLevel("1F");
+		gameObject.transform.position = Vector3(startX, 0, startZ);
 		InitializeStatus();
 }
 
