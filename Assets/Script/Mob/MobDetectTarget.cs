@@ -30,6 +30,7 @@ public class MobDetectTarget : MonoBehaviour {
         bool raycast = Physics.Raycast(ray, out hitInfo, data.visualRange);
         if (raycast == true && hitInfo.collider.gameObject == data.target) {
             Debug.Log("Detect target: player!!!");
+            data.lastMoveTime = Time.time;
             SetPosToMove(data.target.transform.position);
         } else {
             if (raycast == true) {
@@ -37,8 +38,14 @@ public class MobDetectTarget : MonoBehaviour {
             } else {
                 Debug.Log("Detect target: .....");
             }
-            SetPosToMove(data.mob.transform.position);
-            TurnRandomly();
+            float idleTime = Time.time - data.lastMoveTime;
+            if (idleTime >= data.maxIdleTime && IsBlocked() == false) {
+                data.lastMoveTime = Time.time;
+                SetPosToMove(data.mob.transform.position + data.mob.transform.forward);
+            } else {
+                SetPosToMove(data.mob.transform.position);
+                TurnRandomly();
+            }
         }
     }
 
@@ -52,6 +59,14 @@ public class MobDetectTarget : MonoBehaviour {
         int r = Random.Range(0, degrees.Length);
         float degree = degrees[r];
         data.mob.transform.rotation *= Quaternion.Euler(Vector3.up * degree);
+    }
+
+    bool IsBlocked() {
+        Ray ray = CreateRay(data.mob.transform);
+        RaycastHit hitInfo;
+        float range = 1f;
+        bool raycast = Physics.Raycast(ray, out hitInfo, range);
+        return raycast;
     }
 
     static Ray CreateRay(Transform tran) {
