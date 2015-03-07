@@ -27,6 +27,7 @@ public class FSMPlayerExtraTurnRight : FSMPlayer
     {
         Quaternion nextRot = Quaternion.RotateTowards(
           transform.rotation, _endRot, d.rotateSpeed * Time.deltaTime);
+  
         transform.rotation = nextRot;
         if (nextRot == _endRot)
         {
