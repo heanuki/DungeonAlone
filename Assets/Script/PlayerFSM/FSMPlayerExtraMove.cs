@@ -24,11 +24,11 @@ public class FSMPlayerExtraMove : FSMPlayer
     }
 	void Update ()
     {
-        if (_EndPos - transform.forward == transform.position)
+     /*   if (_EndPos - transform.forward == transform.position)
         {
             SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
             return;
-        }
+        }*/
         
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
         transform.position = nextPos;
