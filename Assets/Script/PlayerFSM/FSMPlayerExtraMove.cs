@@ -43,10 +43,19 @@ public class FSMPlayerExtraMove : FSMPlayer
         if (Physics.Raycast(r, out hitInfo, 1f))
         {
             if (hitInfo.collider.tag == "WALL")
+            {
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
+            }
+                
             if (hitInfo.collider.tag == "DOOR")
             {
-               // Debug.Log("Meet the wall|");
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                return;
+            }
+            if (hitInfo.collider.tag == "TORCH")
+           {
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
         }
