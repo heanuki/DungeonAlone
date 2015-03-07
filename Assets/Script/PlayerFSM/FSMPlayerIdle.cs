@@ -10,7 +10,9 @@ public class FSMPlayerIdle : FSMPlayer
         modifiedPos.z = Mathf.Round(modifiedPos.z);
         transform.position = modifiedPos; 
 
-        SendMessage("SetCanAction", true, SendMessageOptions.RequireReceiver);
+        
+        d.bCanReceiveInput = true;
+       // SendMessage("SetCanAction", true, SendMessageOptions.RequireReceiver);
     }
     void OnDisable()
     {

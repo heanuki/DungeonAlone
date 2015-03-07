@@ -77,9 +77,13 @@ public class FSMManagerPlayer : MonoBehaviour
     void ExtraMove()
     {
         //       isLocked = true;
-       
-       
+
+        if (d.bCanReceiveInput)
+        {
+            
             SetStates(PlayerStates.ExtraMove);
+            d.bCanReceiveInput = false;
+        }
 
     }
     void TurnLeft()
@@ -90,8 +94,12 @@ public class FSMManagerPlayer : MonoBehaviour
     void ExtraTurnLeft()
     {
         //       isLocked = true;
-
+        if (d.bCanReceiveInput)
+        {
+           // d.bCanReceiveInput = false;
             SetStates(PlayerStates.ExtraTurnLeft);
+            d.bCanReceiveInput = false;
+        }
 
     }
     void TurnRight()
@@ -102,8 +110,12 @@ public class FSMManagerPlayer : MonoBehaviour
     void ExtraTurnRight()
     {
         //    Debug.Log("right");
-
+        if (d.bCanReceiveInput)
+        {
+            //d.bCanReceiveInput = false;
             SetStates(PlayerStates.ExtraTurnRight);
+            d.bCanReceiveInput = false;
+        }
 
     }
     void Idle()
