@@ -35,12 +35,21 @@ public class FSMPlayerExtraMove : FSMPlayer
         {
             if (hitInfo.collider.tag == "WALL")
                 return;
+            if (hitInfo.collider.tag == "DOOR")
+            {
+               // Debug.Log("Meet the wall|");
+                return;
+            }
         }
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
-        transform.position = nextPos;
+       
         if (_EndPos == nextPos)
         {
             SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+        }
+        else
+        {
+            transform.position = nextPos;
         }
         //transform.position = Vector3.Lerp(_StartPos, _EndPos, _t * d.moveSpeed);
 

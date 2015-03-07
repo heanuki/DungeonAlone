@@ -4,7 +4,7 @@ var snd : AudioClip;	//문열 때 효과음
 
 function OnTriggerEnter(coll : Collider) {
 	if (js_Status.key == 0) {
-		coll.transform.Translate(Vector3.back);					//못가게 막음 	
+		//coll.transform.Translate(Vector3.back);					//못가게 막음 	
 	}
 	else {
 		Destroy(gameObject);					//문 열림 
