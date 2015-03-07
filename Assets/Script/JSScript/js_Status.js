@@ -6,7 +6,7 @@ static var exp = 0;				//경험치
 static var maxHealthPoint = 0;	//최대 체력
 static var healthPoint = 0;	//현재 체력
 static var physicalPower = 1;	//물리공격력
-static var key = 0;				//현재 보유한 열쇠 수 
+static var key = 1;				//현재 보유한 열쇠 수 
 private var _t = 0f;
 var darkDamage = 1;
 var PlayerDeadSnd : AudioClip;	//플레이어 사망 효과음 
@@ -46,11 +46,11 @@ function PlayerDead() {
 function Start () {
 	InitializeStatus();
 }
-function Damaged(){
+function Damaged(damage : int){
     
     if(healthPoint > 0)
     {
-        healthPoint -= 5;
+        healthPoint -= damage;
     }
 }
 function Update () {
