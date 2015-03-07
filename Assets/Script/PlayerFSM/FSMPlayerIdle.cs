@@ -42,6 +42,10 @@ public class FSMPlayerIdle : FSMPlayer
                 // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
+            else
+            {
+                d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);
+            }
         }
         else
             d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);

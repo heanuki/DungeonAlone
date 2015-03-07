@@ -95,7 +95,7 @@ public class FSMPlayerExtraMove : FSMPlayer
     void UseKeyDoor()
    {
        InteractionObj.audio.Play();
-       KeyDoor temp = InteractionObj.GetComponent<KeyDoor>();
+      // KeyDoor temp = InteractionObj.GetComponent<KeyDoor>();
         if(d.keyNum > 0)
         {
             InteractionObj.SendMessage("OnOpenDoor", SendMessageOptions.RequireReceiver);
