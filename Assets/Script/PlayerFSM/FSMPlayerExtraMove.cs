@@ -7,6 +7,7 @@ public class FSMPlayerExtraMove : FSMPlayer
  //    Vector3 _forward;
      Vector3 _StartPos;
      Vector3 _EndPos;
+     public Torchelight torch;
     // public bool canMove = true;
      void SetCanAction(bool bCanAction)
      {
@@ -55,10 +56,15 @@ public class FSMPlayerExtraMove : FSMPlayer
             }
             if (hitInfo.collider.tag == "TORCH")
            {
+               // d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
+                torch = hitInfo.collider.GetComponent<Torchelight>();
                 SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
         }
+        else
+            d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);
+
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
        transform.position = nextPos;
         if (_EndPos == nextPos)
@@ -75,5 +81,13 @@ public class FSMPlayerExtraMove : FSMPlayer
         //    SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
         //} 
 	}
-   
+   void toggleTorch()
+    {
+        torch.gameObject.audio.Play();
+        if (torch.IntensityLight > 0f)
+            torch.IntensityLight = 0f;
+        else
+            torch.IntensityLight = 1f;
+
+    }
 }

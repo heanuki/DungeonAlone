@@ -14,7 +14,7 @@ public class FSMPlayerExtraTurnLeft : FSMPlayer
     }
     void OnEnable()
     {
-        float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
+        //float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
         if (d.bCanReceiveInput)
         {
        //     d.bCanReceiveInput = false;

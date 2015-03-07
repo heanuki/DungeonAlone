@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+
 using System.Collections;
 
 public class FSMPlayerData : FSMDataBase 
@@ -13,14 +14,18 @@ public class FSMPlayerData : FSMDataBase
 	//public float attackRange = 1.6f;
     public bool bCanReceiveInput = true;
 	//public int layerMask;
-	
-	
+    public GameObject UIPanel;
 	
 	protected override void Awake()
 	{
 		base.Awake();
 		anim = GetComponentInChildren<Animator>();
 		cc = GetComponent<CharacterController>();
+        UIPanel = GameObject.FindGameObjectWithTag("InputUIPanel");
 
 	}
+    void Update()
+    {
+
+    }
 }

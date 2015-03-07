@@ -20,7 +20,7 @@ public class FSMPlayerExtraTurnRight : FSMPlayer
         //     _endRot = transform.rotation * Quaternion.Euler(Vector3.up * (tAngle - r));
 
 
-        float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
+     //   float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
         if (d.bCanReceiveInput)
         {
           //  d.bCanReceiveInput = false;
