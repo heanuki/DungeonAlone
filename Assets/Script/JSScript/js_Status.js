@@ -29,7 +29,7 @@ function InitializeStatus () {
 	level = 1;			
 	maxExp = 100000;			
 	exp = 0;				
-	maxHealthPoint = 1000;	
+	maxHealthPoint = 300;	
 	healthPoint = maxHealthPoint;	
 	physicalPower = 1;	
 //	key = 0;				
