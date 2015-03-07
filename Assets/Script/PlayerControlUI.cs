@@ -36,4 +36,8 @@ public class PlayerControlUI : MonoBehaviour
     {
         player.SendMessage("ExtraTurnRight", SendMessageOptions.RequireReceiver);
     }
+    public void OnMoveDamage()
+    {
+        player.SendMessage("Damaged", SendMessageOptions.RequireReceiver);
+    }
 }

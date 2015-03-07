@@ -46,11 +46,13 @@ function PlayerDead() {
 function Start () {
 	InitializeStatus();
 }
-
+function Damaged(){
+    Debug.Log("testlog");
+}
 function Update () {
 
     _t += Time.deltaTime;
-    Debug.Log(_t);
+
     if(_t > 1)
     {
         healthPoint -= darkDamage;
