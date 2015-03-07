@@ -12,11 +12,10 @@ public class FSMPlayerIdle : FSMPlayer
 
         
         d.bCanReceiveInput = true;
-       // SendMessage("SetCanAction", true, SendMessageOptions.RequireReceiver);
     }
     void OnDisable()
     {
-       // Debug.Log("ExitIdle");
+
     }
 	void Update ()
     {
@@ -31,22 +30,21 @@ public class FSMPlayerIdle : FSMPlayer
             if (hitInfo.collider.tag == "TORCH")
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
-               // torch = hitInfo.collider.GetComponent<Torchelight>();
-               // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
             else  if (hitInfo.collider.tag == "KeyDoor")
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 2, SendMessageOptions.RequireReceiver);
-                // torch = hitInfo.collider.GetComponent<Torchelight>();
-                // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
             else if (hitInfo.collider.tag == "Lever")
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 3, SendMessageOptions.RequireReceiver);
-                // torch = hitInfo.collider.GetComponent<Torchelight>();
-                // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                return;
+            }
+            else if (hitInfo.collider.tag == "Barrel")
+            {
+                d.UIPanel.SendMessage("OnChangeButtonImage", 4, SendMessageOptions.RequireReceiver);
                 return;
             }
             else

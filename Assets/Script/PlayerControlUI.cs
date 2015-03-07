@@ -39,5 +39,6 @@ public class PlayerControlUI : MonoBehaviour
     public void OnMoveDamage()
     {
         player.SendMessage("Damaged", 5, SendMessageOptions.RequireReceiver);
-    }  
+    }
+
 }

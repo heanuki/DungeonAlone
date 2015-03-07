@@ -9,6 +9,7 @@ public enum PlayerStates : int
     ExtraTurnLeft,
     TurnRight,
     ExtraTurnRight,
+    Attack,
 
 }
 public class FSMManagerPlayer : MonoBehaviour
@@ -21,9 +22,6 @@ public class FSMManagerPlayer : MonoBehaviour
     public PlayerStates curState;
     public FSMPlayerData d;
 
-   // public bool bCanReceiveInput = true;
-    // bool _NeedSetStateIdle;
-    // Use this for initialization
     void Awake()
     {
         states = GetComponents<FSMBase>();
@@ -36,18 +34,11 @@ public class FSMManagerPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //       if (!isLocked)
-        //       {
-        //           SetStates(savedStates);
-        //       }
+
     }
     void SetStates(PlayerStates newState)
     {
 
-  //      if(newState == PlayerStates.Idle)
-   //         bCanReceiveInput = true;
-        
-           // Debug.Log(newState);
             curState = newState;
             foreach (FSMBase fb in states)
             {
@@ -55,32 +46,18 @@ public class FSMManagerPlayer : MonoBehaviour
             }
             states[(int)curState].enabled = true;
             d.anim.SetInteger("curState", (int)curState);
-      
-        //     if (newState != PlayerStates.Idle && curState == newState)
-        //           return;
-
-        //      if(!isLocked)
-        //       {
-       
-        //       }
-        //      else
-        //       {
-        //           savedStates = newState;
-        //       }
 
     }
     void Move()
     {
-        //       isLocked = true;
         SetStates(PlayerStates.Move);
     }
     void ExtraMove()
     {
-        //       isLocked = true;
 
         if (d.bCanReceiveInput)
         {
-            
+          
             SetStates(PlayerStates.ExtraMove);
             d.bCanReceiveInput = false;
         }
@@ -88,15 +65,12 @@ public class FSMManagerPlayer : MonoBehaviour
     }
     void TurnLeft()
     {
-        //    Debug.Log("left");
         SetStates(PlayerStates.TurnLeft);
     }
     void ExtraTurnLeft()
     {
-        //       isLocked = true;
         if (d.bCanReceiveInput)
         {
-           // d.bCanReceiveInput = false;
             SetStates(PlayerStates.ExtraTurnLeft);
             d.bCanReceiveInput = false;
         }
@@ -104,15 +78,12 @@ public class FSMManagerPlayer : MonoBehaviour
     }
     void TurnRight()
     {
-        //    Debug.Log("right");
         SetStates(PlayerStates.TurnRight);
     }
     void ExtraTurnRight()
     {
-        //    Debug.Log("right");
         if (d.bCanReceiveInput)
         {
-            //d.bCanReceiveInput = false;
             SetStates(PlayerStates.ExtraTurnRight);
             d.bCanReceiveInput = false;
         }
@@ -120,8 +91,14 @@ public class FSMManagerPlayer : MonoBehaviour
     }
     void Idle()
     {
-        //_NeedSetStateIdle = true;
-       
         SetStates(PlayerStates.Idle);
+    }
+    void Attack()
+    {
+    /*    if (d.bCanReceiveInput)
+        {
+            SetStates(PlayerStates.Attack);
+            d.bCanReceiveInput = false;
+        }*/
     }
 }
