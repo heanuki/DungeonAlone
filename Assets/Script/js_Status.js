@@ -7,6 +7,8 @@ static var maxHealthPoint = 10;	//최대 체력
 static var healthPoint = 10;	//현재 체력
 static var physicalPower = 1;	//물리공격력
 static var key = 0;				//현재 보유한 열쇠 수 
+private var _t = 0f;
+var darkDamage = 1;
 var PlayerDeadSnd : AudioClip;	//플레이어 사망 효과음 
 
 var levelUpSnd : AudioClip;	//레벨업 시 효과음
@@ -25,8 +27,8 @@ function InitializeStatus () {
 	level = 1;			
 	maxExp = 3;			
 	exp = 0;				
-	maxHealthPoint = 10;	
-	healthPoint = 10;	
+	maxHealthPoint = 100;	
+	healthPoint = maxHealthPoint;	
 	physicalPower = 1;	
 	key = 0;				
 
@@ -46,6 +48,15 @@ function Start () {
 }
 
 function Update () {
+
+    _t += Time.deltaTime;
+    Debug.Log(_t);
+    if(_t > 1)
+    {
+        healthPoint -= darkDamage;
+        _t -= 1;
+    }
+
 
 	//레벨업 처리
 	if (exp >= maxExp) {				
