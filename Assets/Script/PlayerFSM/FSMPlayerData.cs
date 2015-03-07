@@ -16,7 +16,7 @@ public class FSMPlayerData : FSMDataBase
 	//public int layerMask;
     public GameObject UIPanel;
 
-    public int keyNum = 1;
+    public int keyNum = 0;
 	
 	protected override void Awake()
 	{
@@ -30,8 +30,8 @@ public class FSMPlayerData : FSMDataBase
     {
 
     }
-    void OnGUI()
-    {
-        GUI.Label(new Rect(10, 90, 120, 20), "열쇠 : " + keyNum);
-    }
+    //void OnGUI()
+    //{
+    //    GUI.Label(new Rect(10, 90, 120, 20), "열쇠 : " + keyNum);
+    //}
 }
