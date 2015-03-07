@@ -11,9 +11,6 @@ public class FSMPlayerMove : FSMPlayer
 
     void OnEnable()
     {
-
-       // Debug.Log("EnterExtraMove");
-  //      _forward = transform.forward;
         _StartPos = transform.position;
         _EndPos = new Vector3((float)((int)_StartPos.x), transform.position.y, (float)((int)_StartPos.z)) + transform.forward;
 
@@ -24,6 +21,13 @@ public class FSMPlayerMove : FSMPlayer
     }
     void Update()
     {
+        Ray r = new Ray(_StartPos, _EndPos - _StartPos);
+        RaycastHit hitInfo;
+        if(Physics.Raycast(r, out hitInfo, 1f))
+        {
+            if(hitInfo.collider.tag == "WALL")
+                return;
+        }
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
         transform.position = nextPos;
         if(_EndPos == nextPos)

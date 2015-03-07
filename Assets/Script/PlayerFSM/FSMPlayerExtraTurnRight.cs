@@ -10,12 +10,14 @@ public class FSMPlayerExtraTurnRight : FSMPlayer
    // Vector3 rotateAxis = new Vector3(0f, 1f, 0f);
     void OnEnable()
     {
-        float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
+   //     float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
        
-        float tAngle = Mathf.Ceil(r / 90f) * 90f;
-        Debug.Log("r = " + r + ", tAngle = " + tAngle);
-        _endRot = transform.rotation * Quaternion.Euler(Vector3.up * (tAngle - r));
-       // Debug.Log("EnterExtraTurnLeft");
+  //      float tAngle = Mathf.Ceil(r / 90f) * 90f;
+   //     _endRot = transform.rotation * Quaternion.Euler(Vector3.up * (tAngle - r));
+
+        
+        float r = Quaternion.Angle(Quaternion.identity, transform.rotation);
+        _endRot = transform.rotation * Quaternion.Euler(Vector3.up * 90f);
     }
     void OnDisable()
     {
