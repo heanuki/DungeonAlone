@@ -8,10 +8,10 @@ public class FSMPlayerExtraMove : FSMPlayer
      Vector3 _StartPos;
      Vector3 _EndPos;
 
-    float _t;
+
     void OnEnable()
     {
-        _t = 0f;
+
        // Debug.Log("EnterExtraMove");
   //      _forward = transform.forward;
         _StartPos = transform.position;
@@ -24,7 +24,7 @@ public class FSMPlayerExtraMove : FSMPlayer
     }
 	void Update ()
     {
-        _t += Time.deltaTime;
+
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
         transform.position = nextPos;
 

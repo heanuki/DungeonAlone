@@ -4,35 +4,35 @@ using System.Collections;
 public class FSMPlayerMove : FSMPlayer
 {
 
-     Vector3 _forward;
-  //  public FSMManagerPlayer manager;
+     //    Vector3 _forward;
+     Vector3 _StartPos;
+     Vector3 _EndPos;
 
-    float _t;
+
     void OnEnable()
     {
-       
-        Debug.Log("EnterMove");
-        _forward = transform.forward;
- //        _endPos.Translate(Vector3.forward);
+
+       // Debug.Log("EnterExtraMove");
+  //      _forward = transform.forward;
+        _StartPos = transform.position;
+        _EndPos = new Vector3((float)((int)_StartPos.x), transform.position.y, (float)((int)_StartPos.z)) + transform.forward;
 
     }
     void OnDisable()
     {
-        Debug.Log("ExitMove");
+        //Debug.Log("ExitExtraMove");
     }
-	void Update ()
+    void Update()
     {
-        _t += Time.deltaTime;
-        Vector3 deltaMove = _forward * d.moveSpeed ;
-        cc.Move(deltaMove * Time.deltaTime);
-    //    transform.position = Vector3.Lerp(_startPos, _endPos, _t * d.moveSpeed);
-
-     /*   if(_t * d.moveSpeed > 1f)
+        Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
+        transform.position = nextPos;
+        if(_EndPos == nextPos)
         {
-            _t = 0f;
-            _startPos = transform.position;
-            _endPos = transform.position + _forward;
-        }*/
-	}
+            _StartPos = transform.position;
+            _EndPos = new Vector3((float)((int)_StartPos.x), transform.position.y, (float)((int)_StartPos.z)) + transform.forward;
+
+        }
+
+    }
    
 }
