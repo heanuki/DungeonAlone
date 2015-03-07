@@ -55,7 +55,7 @@ public class FSMPlayerExtraMove : FSMPlayer
                 SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
-            if (hitInfo.collider.tag == "TORCH")
+            if (hitInfo.collider.tag == "TORCH" || hitInfo.collider.tag == "Lever")
            {
                // d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
                InteractionObj = hitInfo.collider.gameObject;
@@ -103,4 +103,13 @@ public class FSMPlayerExtraMove : FSMPlayer
         }
        
    }
+    void UseLever()
+    {
+       // InteractionObj.audio.Play();
+        // KeyDoor temp = InteractionObj.GetComponent<KeyDoor>();
+        {
+            InteractionObj.SendMessage("onMoveLever", SendMessageOptions.RequireReceiver);
+        }
+
+    }
 }

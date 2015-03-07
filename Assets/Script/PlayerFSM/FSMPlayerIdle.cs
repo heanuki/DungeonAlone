@@ -35,9 +35,16 @@ public class FSMPlayerIdle : FSMPlayer
                // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
-            if (hitInfo.collider.tag == "KeyDoor")
+            else  if (hitInfo.collider.tag == "KeyDoor")
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 2, SendMessageOptions.RequireReceiver);
+                // torch = hitInfo.collider.GetComponent<Torchelight>();
+                // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                return;
+            }
+            else if (hitInfo.collider.tag == "Lever")
+            {
+                d.UIPanel.SendMessage("OnChangeButtonImage", 3, SendMessageOptions.RequireReceiver);
                 // torch = hitInfo.collider.GetComponent<Torchelight>();
                 // SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;

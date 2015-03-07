@@ -6,7 +6,7 @@ public enum ButtonState : int
     Move = 0,
     Torch,
     UseKey,
- //   Switch,
+    Lever,
 
 
 }
@@ -42,6 +42,10 @@ public class ChangeButtonType : MonoBehaviour
         else if(states == ButtonState.UseKey)
         {
             player.SendMessage("UseKeyDoor", SendMessageOptions.RequireReceiver);
+        }
+        else if (states == ButtonState.Lever)
+        {
+            player.SendMessage("UseLever", SendMessageOptions.RequireReceiver);
         }
     }
 
