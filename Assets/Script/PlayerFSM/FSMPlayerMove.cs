@@ -8,7 +8,7 @@ public class FSMPlayerMove : FSMPlayer
      Vector3 _StartPos;
      Vector3 _EndPos;
 
-
+    
     void OnEnable()
     {
         _StartPos = transform.position;
