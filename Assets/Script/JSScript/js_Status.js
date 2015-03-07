@@ -47,7 +47,11 @@ function Start () {
 	InitializeStatus();
 }
 function Damaged(){
-    Debug.Log("testlog");
+    
+    if(healthPoint > 0)
+    {
+        healthPoint -= 5;
+    }
 }
 function Update () {
 
