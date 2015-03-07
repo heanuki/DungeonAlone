@@ -29,7 +29,13 @@ public class FSMPlayerExtraMove : FSMPlayer
             SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
             return;
         }*/
-        
+        Ray r = new Ray(_StartPos, _EndPos - _StartPos);
+        RaycastHit hitInfo;
+        if (Physics.Raycast(r, out hitInfo, 1f))
+        {
+            if (hitInfo.collider.tag == "WALL")
+                return;
+        }
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
         transform.position = nextPos;
         if (_EndPos == nextPos)
