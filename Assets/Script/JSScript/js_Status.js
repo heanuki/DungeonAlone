@@ -12,7 +12,7 @@ var startX = 2;
 var startZ = -9;
 var darkDamage = 1;
 var PlayerDeadSnd : AudioClip;	//플레이어 사망 효과음 
-
+var stageName = "1F";
 var levelUpSnd : AudioClip;	//레벨업 시 효과음
 
 //주인공의 능력치를 화면에 표시
@@ -39,7 +39,7 @@ function InitializeStatus () {
 function PlayerDead() {
 		print("You are dead!");
 		AudioSource.PlayClipAtPoint(PlayerDeadSnd, transform.position);	//플레이어 사망 효과음 
-		Application.LoadLevel("1F");
+		Application.LoadLevel(stageName);
 		gameObject.transform.position = Vector3(startX, 0, startZ);
 		InitializeStatus();
 }
