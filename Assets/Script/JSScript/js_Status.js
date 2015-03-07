@@ -6,7 +6,7 @@ static var exp = 0;				//경험치
 static var maxHealthPoint = 0;	//최대 체력
 static var healthPoint = 0;	//현재 체력
 static var physicalPower = 1;	//물리공격력
-static var key = 1;				//현재 보유한 열쇠 수 
+//static var key = 1;				//현재 보유한 열쇠 수 
 private var _t = 0f;
 var startX = 2;
 var startZ = -9;
@@ -21,7 +21,7 @@ function OnGUI() {
 	//GUI.Label(Rect(10, 30, 120, 20), "경험치 : " + exp + "/" + maxExp);
 	GUI.Label(Rect(10, 50, 120, 20), "체력 : " + healthPoint + "/" + maxHealthPoint);
 	//GUI.Label(Rect(10, 70, 120, 20), "공격력 : " + physicalPower);
-	GUI.Label(Rect(10, 90, 120, 20), "열쇠 : " + key);
+	//GUI.Label(Rect(10, 90, 120, 20), "열쇠 : " + key);
 }
 
 function InitializeStatus () {
@@ -32,7 +32,7 @@ function InitializeStatus () {
 	maxHealthPoint = 1000;	
 	healthPoint = maxHealthPoint;	
 	physicalPower = 1;	
-	key = 0;				
+//	key = 0;				
 
 }
 

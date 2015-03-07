@@ -5,8 +5,9 @@ public enum ButtonState : int
 {
     Move = 0,
     Torch,
+    UseKey,
  //   Switch,
- //   UseKey,
+
 
 }
 public class ChangeButtonType : MonoBehaviour
@@ -33,10 +34,14 @@ public class ChangeButtonType : MonoBehaviour
     }
     public void OnClick()
     {
-        Debug.Log("button Clicked" + states);
+  //      Debug.Log("button Clicked" + states);
         if(states == ButtonState.Torch)
         {
             player.SendMessage("toggleTorch", SendMessageOptions.RequireReceiver);
+        }
+        else if(states == ButtonState.UseKey)
+        {
+            player.SendMessage("UseKeyDoor", SendMessageOptions.RequireReceiver);
         }
     }
 

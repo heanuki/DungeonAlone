@@ -7,7 +7,7 @@ public class FSMPlayerExtraMove : FSMPlayer
  //    Vector3 _forward;
      Vector3 _StartPos;
      Vector3 _EndPos;
-     public Torchelight torch;
+     public GameObject InteractionObj;
     // public bool canMove = true;
      void SetCanAction(bool bCanAction)
      {
@@ -48,16 +48,17 @@ public class FSMPlayerExtraMove : FSMPlayer
                 SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
-                
-            if (hitInfo.collider.tag == "DOOR")
+
+            if (hitInfo.collider.tag == "DOOR" || hitInfo.collider.tag == "KeyDoor")
             {
+                InteractionObj = hitInfo.collider.gameObject;
                 SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
             if (hitInfo.collider.tag == "TORCH")
            {
                // d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
-                torch = hitInfo.collider.GetComponent<Torchelight>();
+               InteractionObj = hitInfo.collider.gameObject;
                 SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
                 return;
             }
@@ -83,11 +84,23 @@ public class FSMPlayerExtraMove : FSMPlayer
 	}
    void toggleTorch()
     {
-        torch.gameObject.audio.Play();
-        if (torch.IntensityLight > 0f)
-            torch.IntensityLight = 0f;
+        InteractionObj.audio.Play();
+        Torchelight temp = InteractionObj.GetComponent<Torchelight>();
+        if (temp.IntensityLight > 0f)
+            temp.IntensityLight = 0f;
         else
-            torch.IntensityLight = 1f;
+            temp.IntensityLight = 1f;
 
     }
+    void UseKeyDoor()
+   {
+       InteractionObj.audio.Play();
+       KeyDoor temp = InteractionObj.GetComponent<KeyDoor>();
+        if(d.keyNum > 0)
+        {
+            InteractionObj.SendMessage("OnOpenDoor", SendMessageOptions.RequireReceiver);
+            d.keyNum--;
+        }
+       
+   }
 }

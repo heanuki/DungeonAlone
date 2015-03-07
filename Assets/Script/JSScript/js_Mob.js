@@ -17,7 +17,7 @@ function OnTriggerEnter(coll : Collider) {
 		AudioSource.PlayClipAtPoint(DistroySnd, transform.position);	//제거효과음 
 		Destroy(gameObject);											//몬스터 제거 
 		js_Status.exp += rewardExp;										//경험치 보상
-		js_Status.key += rewardKey;										//열쇠 보상 
+		// js_Status.key += rewardKey;										//열쇠 보상 
 		return;															//이대로 연산 종료
 	}
 	
