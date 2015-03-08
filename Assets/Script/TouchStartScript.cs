@@ -18,6 +18,11 @@ public class TouchStartScript : MonoBehaviour {
         {
             Color temp = GetComponentInParent<Image>().color;
             GetComponentInParent<Image>().color = new Color(temp.r, temp.g, temp.b, 1f);
+
+            if (Input.GetMouseButtonDown(0)) {
+                string firstStage = "0F";
+                Application.LoadLevel(firstStage);
+            }
         }
         t -= Time.deltaTime;
 	}
