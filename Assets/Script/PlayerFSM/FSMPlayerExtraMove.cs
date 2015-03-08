@@ -45,33 +45,33 @@ public class FSMPlayerExtraMove : FSMPlayer
         {
             if (hitInfo.collider.tag == "WALL")
             {
-                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
                 return;
             }
 
             if (hitInfo.collider.tag == "DOOR" || hitInfo.collider.tag == "KeyDoor")
             {
                 InteractionObj = hitInfo.collider.gameObject;
-                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
                 return;
             }
             if (hitInfo.collider.tag == "TORCH" || hitInfo.collider.tag == "Lever" || hitInfo.collider.tag == "Barrel")
             {
                 // d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
                 InteractionObj = hitInfo.collider.gameObject;
-                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+                SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
                 return;
             }
         }
         else
-            d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);
+            d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.DontRequireReceiver);
 
         Vector3 nextPos = Vector3.MoveTowards(transform.position, _EndPos, d.moveSpeed * Time.deltaTime);
         transform.position = nextPos;
         if (_EndPos == nextPos)
         {
             // d.bCanReceiveInput = true;
-            SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
+            SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
         }
 
     }
@@ -91,14 +91,14 @@ public class FSMPlayerExtraMove : FSMPlayer
         // KeyDoor temp = InteractionObj.GetComponent<KeyDoor>();
         if (d.keyNum > 0)
         {
-            InteractionObj.SendMessage("OnOpenDoor", SendMessageOptions.RequireReceiver);
+            InteractionObj.SendMessage("OnOpenDoor", SendMessageOptions.DontRequireReceiver);
             d.keyNum--;
         }
 
     }
     void UseLever()
     {
-        InteractionObj.SendMessage("onMoveLever", SendMessageOptions.RequireReceiver);
+        InteractionObj.SendMessage("onMoveLever", SendMessageOptions.DontRequireReceiver);
     }
     void AttackBarrel()
     {
