@@ -18,6 +18,7 @@ public class KeyIcon : MonoBehaviour {
         if (keysSize == prevKeysSize) {
             return;
         }
+        Debug.Log("UI: keys: " + prevKeysSize + " -> " + keysSize);
 
         int displaySize = Mathf.Min(keysSize, keyIcons.Length);
         int i = 0;
