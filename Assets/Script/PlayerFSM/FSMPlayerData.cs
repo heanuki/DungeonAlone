@@ -26,6 +26,10 @@ public class FSMPlayerData : FSMDataBase
         UIPanel = GameObject.FindGameObjectWithTag("InputUIPanel");
 
 	}
+    void AddKey(int num)
+    {
+        keyNum += num;
+    }
     void Update()
     {
 

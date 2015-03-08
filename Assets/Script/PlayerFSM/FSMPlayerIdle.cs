@@ -42,11 +42,11 @@ public class FSMPlayerIdle : FSMPlayer
                 d.UIPanel.SendMessage("OnChangeButtonImage", 3, SendMessageOptions.RequireReceiver);
                 return;
             }
-            else if (hitInfo.collider.tag == "Barrel")
+         /*   else if (hitInfo.collider.tag == "MOB")
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 4, SendMessageOptions.RequireReceiver);
                 return;
-            }
+            }*/
             else
             {
                 d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);

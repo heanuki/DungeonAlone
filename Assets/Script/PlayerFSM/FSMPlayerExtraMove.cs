@@ -102,6 +102,7 @@ public class FSMPlayerExtraMove : FSMPlayer
     }
     void AttackBarrel()
     {
-        InteractionObj.SendMessage("onAttack", SendMessageOptions.RequireReceiver);
+        //InteractionObj.SendMessage("OnDamage", 1, SendMessageOptions.RequireReceiver);
+        //SendMessage("SetStates", PlayerStates.Attack, SendMessageOptions.RequireReceiver);
     }
 }
