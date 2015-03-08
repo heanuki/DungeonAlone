@@ -9,6 +9,9 @@ public class MobBarrel : MonoBehaviour
     public float GettingMeetRatio = 0.5f;
 
     public FSMPlayerData pd;
+    public GameObject MeetObject;
+
+    public AudioClip DistroySnd;
 
     void Awake()
     {
@@ -18,13 +21,15 @@ public class MobBarrel : MonoBehaviour
     {
         js_Status.healthPoint -= physicalPower;
         coll.transform.Translate(Vector3.back);
+       // coll.SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
         OnDamage(1);
     }
 
     void OnDamage(int attkPoint)
     {
 
-        audio.Play();
+        //audio.Play();
+        AudioSource.PlayClipAtPoint(DistroySnd, transform.position);
 
             
         healthPoint -= attkPoint;
@@ -32,17 +37,22 @@ public class MobBarrel : MonoBehaviour
     }
     void OnDead()
     {
+       // pd.transform.SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.DontRequireReceiver);
+      
         Debug.Log("mob dead ");
         //player.SendMessage("SetStates", PlayerStates.Idle, SendMessageOptions.RequireReceiver);
         js_Status.exp += rewardExp;
-        
-        Destroy(gameObject);
+
         SpawnReward();
+        Destroy(gameObject);
+        //gameObject.SetActive(false);
+       
     }
     void SpawnReward()
     {
         if (Random.Range(0f, 1f) < GettingMeetRatio)
         {
+            Instantiate(MeetObject, transform.position, transform.rotation);
             //gameObject.
             //여기에 키 스폰  
             //pd.SendMessage("AddKey", 1, SendMessageOptions.RequireReceiver);
