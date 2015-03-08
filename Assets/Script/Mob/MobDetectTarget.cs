@@ -33,11 +33,6 @@ public class MobDetectTarget : MonoBehaviour {
             data.lastMoveTime = Time.time;
             SetPosToMove(data.target.transform.position);
         } else {
-            if (raycast == true) {
-                Debug.Log("Detect target: " + hitInfo.collider.gameObject + ", dist: " + hitInfo.distance);
-            } else {
-                Debug.Log("Detect target: .....");
-            }
             float idleTime = Time.time - data.lastMoveTime;
             if (idleTime >= data.maxIdleTime && IsBlocked() == false) {
                 data.lastMoveTime = Time.time;
