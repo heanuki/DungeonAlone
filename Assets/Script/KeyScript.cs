@@ -4,10 +4,12 @@ using System.Collections;
 public class KeyScript : MonoBehaviour 
 {
     public float turnspeed = 50f;
+    public AudioClip DistroySnd;
+
     void OnTriggerEnter(Collider col)
     {
-        Debug.Log("getkey");
-        audio.Play();
+        //Debug.Log("getkey");
+        AudioSource.PlayClipAtPoint(DistroySnd, transform.position);
         col.transform.GetComponent<FSMPlayerData>().keyNum++;
         Destroy(gameObject);
     }
