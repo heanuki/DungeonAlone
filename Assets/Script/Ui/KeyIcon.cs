@@ -28,5 +28,7 @@ public class KeyIcon : MonoBehaviour {
         for (; i < keyIcons.Length; ++i) {
             keyIcons[i].SetActive(false);
         }
+
+        prevKeysSize = keysSize;
 	}
 }
