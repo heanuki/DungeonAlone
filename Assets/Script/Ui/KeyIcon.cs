@@ -10,7 +10,7 @@ public class KeyIcon : MonoBehaviour {
 
     void Awake() {
         playerData = GameObject.Find("Player").GetComponent<FSMPlayerData>();
-        prevKeysSize = 0;
+        prevKeysSize = -1;
     }
 
     void Update() {
