@@ -6,7 +6,7 @@ public class MobBarrel : MonoBehaviour
     public int healthPoint = 1;			//몬스터의 체력
     public int physicalPower = 0;	    //몬스터의 물리공격력 
     public int rewardExp = 0;
-    public float GettingKeyRatio = 0.5f;
+    public float GettingMeetRatio = 0.5f;
 
     public FSMPlayerData pd;
 
@@ -23,8 +23,10 @@ public class MobBarrel : MonoBehaviour
 
     void OnDamage(int attkPoint)
     {
-        if (audio)
-            audio.Play();
+
+        audio.Play();
+
+            
         healthPoint -= attkPoint;
 
     }
@@ -39,10 +41,12 @@ public class MobBarrel : MonoBehaviour
     }
     void SpawnReward()
     {
-        if (Random.Range(0f, 1f) < GettingKeyRatio)
+        if (Random.Range(0f, 1f) < GettingMeetRatio)
         {
+            //gameObject.
             //여기에 키 스폰  
-            pd.SendMessage("AddKey", 1, SendMessageOptions.RequireReceiver);
+            //pd.SendMessage("AddKey", 1, SendMessageOptions.RequireReceiver);
+
         }
     }
     // Update is called once per frame
