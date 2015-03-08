@@ -29,17 +29,17 @@ public class FSMPlayerIdle : FSMPlayer
            
             if (hitInfo.collider.tag == "TORCH")
             {
-                d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.RequireReceiver);
+                d.UIPanel.SendMessage("OnChangeButtonImage", 1, SendMessageOptions.DontRequireReceiver);
                 return;
             }
             else  if (hitInfo.collider.tag == "KeyDoor")
             {
-                d.UIPanel.SendMessage("OnChangeButtonImage", 2, SendMessageOptions.RequireReceiver);
+                d.UIPanel.SendMessage("OnChangeButtonImage", 2, SendMessageOptions.DontRequireReceiver);
                 return;
             }
             else if (hitInfo.collider.tag == "Lever")
             {
-                d.UIPanel.SendMessage("OnChangeButtonImage", 3, SendMessageOptions.RequireReceiver);
+                d.UIPanel.SendMessage("OnChangeButtonImage", 3, SendMessageOptions.DontRequireReceiver);
                 return;
             }
          /*   else if (hitInfo.collider.tag == "MOB")
@@ -49,12 +49,13 @@ public class FSMPlayerIdle : FSMPlayer
             }*/
             else
             {
-                d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);
+                d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.DontRequireReceiver);
             }
         }
         else
-            d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.RequireReceiver);
-
+        { 
+            d.UIPanel.SendMessage("OnChangeButtonImage", 0, SendMessageOptions.DontRequireReceiver);
+        }
 	}
  
 }
