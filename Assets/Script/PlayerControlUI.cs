@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerControlUI : MonoBehaviour 
 {
     public GameObject player;
+	public float moveDamage = 5;
+
     void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
@@ -38,7 +40,7 @@ public class PlayerControlUI : MonoBehaviour
     }
     public void OnMoveDamage()
     {
-        player.SendMessage("Damaged", 5, SendMessageOptions.RequireReceiver);
+        player.SendMessage("Damaged", moveDamage, SendMessageOptions.RequireReceiver);
     }
 
 }

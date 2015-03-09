@@ -7,6 +7,8 @@ public class NearbyMob : MonoBehaviour
     public GameObject temp;
     public GameObject pc;
     public float damageCycle = 1f;
+	public float mobDamage = 10f;
+
     void Awake()
     {
         temp = GameObject.FindGameObjectWithTag("Balloon") ;
@@ -35,7 +37,7 @@ public class NearbyMob : MonoBehaviour
             if (damageCycle < 0f)
             {
                // Debug.Log("damaged!!!");
-                pc.SendMessage("Damaged", 3, SendMessageOptions.RequireReceiver);
+				pc.SendMessage("Damaged", mobDamage, SendMessageOptions.RequireReceiver);
                 damageCycle = 2f;
             }
             damageCycle -= Time.deltaTime;
